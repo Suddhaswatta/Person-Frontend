@@ -1,0 +1,38 @@
+.thead{
+    background-color: rgb(17, 115, 212);
+    text-transform: uppercase;
+    color: white;
+}
+
+button{
+    box-shadow: 5px 5px 10px #ddd;
+}
+
+.btn.create{
+    background-color: rgb(15, 108, 201);
+    color: white;
+    margin: 1em 0 0 1em;
+    font-weight: bold;
+
+}
+select{
+
+    background-color: white;
+    border:0px;
+    outline:0px;
+    border-bottom: solid 4px dodgerblue;
+
+
+}
+
+option{
+    text-transform: capitalize;
+    
+}
+
+.icon-create{
+    padding: 5px;
+    margin-left: 5px;
+    border-left: solid 2px white;
+    border-radius: 5px;
+}

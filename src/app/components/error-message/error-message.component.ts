@@ -1,0 +1,17 @@
+import { Component, OnInit, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+
+@Component({
+  selector: 'app-error-message',
+  templateUrl: './error-message.component.html',
+  styleUrls: ['./error-message.component.css']
+})
+export class ErrorMessageComponent implements OnInit {
+
+  constructor(@Inject(MAT_DIALOG_DATA) public message: any) { }
+  errorMessage:string = this.message.error;
+  
+  ngOnInit(): void {
+  }
+
+}

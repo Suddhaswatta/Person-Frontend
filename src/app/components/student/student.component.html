@@ -1,0 +1,73 @@
+<div class="d-flex" style="padding-bottom: 1em;box-shadow: 5px 5px 6px -6px black;">
+    <button  class="btn create" (click)=handleSave()>Student<i  class="fa fa-plus icon-create" aria-hidden="true"></i></button>
+    <button  style="margin-left: auto;margin-right: 1em;" class="btn create" (click)=refresh()><i  class="fa fa-undo" aria-hidden="true"></i></button>
+</div>
+<div class="d-flex flex-wrap justify-content-end" style="box-shadow: 0 2px 6px -6px black;">
+    <div class="p-2">
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="filterCheck" (change)=applyFilter($event)>
+            <label class="form-check-label" for="filterCheck">Filter</label>
+          </div>
+    </div>
+    <div class="d-flex" >
+        <div class="form-group p-1">
+            <select class="form-control form-control-sm" name="age" (change)="filterSelect($event)">
+                <option selected value="">Filter by age</option>
+                <option *ngFor='let age of ageOptions' [value]="age">
+                    {{age}}
+                </option>
+              </select>
+        </div>
+        <div class="form-group p-1">
+            <select class="form-control form-control-sm" name="section" (change)="filterSelect($event)">
+                <option selected value="">Filter by section</option>
+                <option *ngFor='let section of sectionOptions' [value]="section">
+                    {{section}}
+                </option>
+              </select>
+        </div>
+        <div class="form-group p-1">
+            <select class="form-control form-control-sm" name="standard" (change)="filterSelect($event)">
+                <option selected value="">Filter by standard</option>
+                <option *ngFor='let standard of standardOptions' [value]="standard" >
+                    {{standard}}
+                </option>
+              </select>
+        </div>
+    </div>
+    
+</div>
+<table class="table table-sm table-responsive-sm table-striped table-hover col-md-10 " style="margin:auto;margin-top:1em;box-shadow: 4px 4px 4px gray;">
+    <thead class="thead">
+        <tr>
+            <th>student id</th>
+            <th>Standard</th>
+            <th>Section</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>DOB</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor='let student of students$ | async'>
+            <td>{{student.id}}</td>
+            <td>{{student.standard}}</td>
+            <td>{{student.section}}</td>
+            <td>{{student.lastname}},{{student.firstname}}</td>
+            <td>{{student.age}}</td>
+            <td>{{student.dob | date}}</td>
+            <td>
+                <button class="btn" (click)=handleSave(student)>
+                    <i class="fa fa-edit" style="color: rgb(252, 4, 252);"></i>
+                </button>
+            </td>
+            <td>
+                <button class="btn" (click)=handleDelete(student.id)>
+                    <i class="fa fa-trash" style="color: rgb(252, 7, 7);"></i>
+                </button>
+            </td>    
+        </tr>
+    </tbody>
+</table>
